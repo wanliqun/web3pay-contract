@@ -16,12 +16,12 @@ export async function main() {
 	if (!fs.existsSync(saveAtDir)) {
 		fs.mkdirSync(saveAtDir)
 	}
-	let path = `./artifacts/contracts${version}`;
+	let path = process.cwd() + `/artifacts/contracts${version}`;
 	const files = fs.readdirSync(path)
 	console.log(`found ${files.length} file(s) at ${path}`)
 	for (let dir of files) {
 		const name = dir.split('.')[0]
-		let jsonPath = `${process.cwd()}/${path}/${dir}/${name}.json`;
+		let jsonPath = `${path}/${dir}/${name}.json`;
 		if (!fs.existsSync(jsonPath)) {
 			console.log(`not exists ${jsonPath}`)
 			continue
